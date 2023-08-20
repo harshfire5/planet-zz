@@ -1,0 +1,68 @@
+{
+   "aerial": [
+      {
+         "id": 0,
+         "name": "Celestial Symphony",
+         "desc": "Soar above our crystalline canyons on hoverboards equipped with sound generators. As you glide, create celestial music harmonizing with the wind and the stars. Feel the rhythms of the cosmos coursing through you in this exhilarating dance of sound and air."
+      },
+      {
+         "id": 1,
+         "name": "Aero-Sculpture Painting",
+         "desc": "Become an artist of the skies. Hover through the heavens, releasing vibrant paint as you go, painting the sky with your movements. As you dance in the air, your masterpiece takes shape, blending your creativity with the limitless canvas of the sky."
+      },
+      {
+         "id": 2,
+         "name": "Skyportal Dancing",
+         "desc": "Step onto transparent floating platforms, each one responding to your every move. Your dance becomes a mesmerizing light show, painting the sky with your choreography. It's like waltzing among the stars, leaving trails of enchantment in your wake."
+      },
+      {
+         "id": 3,
+         "name": "Zero-G Skydiving Parties",
+         "desc": "Imagine a party where gravity is just a suggestion. Host your celebrations in the stratosphere with friends, where you float freely in a cosmic dance of music, food, and endless views. It's a celebration like no other, where you truly defy gravity."
+      }
+   ],
+   "aqua": [
+      {
+         "id": 0,
+         "name": "Abyssal Symphony",
+         "desc": "Dive into our deep-sea concert hall where you become part of the performance. Submerge among luminescent aquatic creatures while world-class musicians play ethereal music. It's an underwater symphony that transcends the ordinary."
+      },
+      {
+         "id": 1,
+         "name": "Coral Reef Artistry",
+         "desc": "Use underwater 3D printing technology to craft intricate sculptures that become part of the coral reefs, providing homes for marine life. You'll be an artist and a conservationist, contributing to the vibrant underwater world."
+      },
+      {
+         "id": 2,
+         "name": "AquaVenture Treasure Hunt",
+         "desc": "Equip yourself with AI-assisted diving gear and embark on high-tech treasure hunts, with holographic clues and underwater puzzles. Dive into a world of mystery and adventure beneath the waves."
+      },
+      {
+         "id": 3,
+         "name": "Subspace Submersibles",
+         "desc": "Experience teleportation-like travel underwater in our subspace submersibles, taking you instantly to distant, otherworldly underwater realms. Explore underwater landscapes that defy imagination."
+      }
+   ],
+   "land": [
+      {
+         "id": 0,
+         "name": "Quantum Parkour",
+         "desc": "Navigate a parkour course with quantum physics-infused obstacles. Challenge your agility as the world around you bends and shifts. It's parkour redefined, where you must adapt to ever-changing terrain."
+      },
+      {
+         "id": 1,
+         "name": "MindMaze Escapes",
+         "desc": "Enter mind-bending mazes with walls that respond to your thoughts. Solve puzzles by controlling the maze with your mind. Your intelligence and mental agility will be your greatest assets."
+      },
+      {
+         "id": 2,
+         "name": "DinoSafari Expeditions",
+         "desc": "Travel back in time with lifelike holographic dinosaurs in our DinoSafari vehicles. Witness these ancient creatures in their natural habitats, all while enjoying modern comforts and safety."
+      },
+      {
+         "id": 3,
+         "name": "Hoverboard Polo",
+         "desc": "Compete in an intense, fast-paced game of polo played on anti-gravity hoverboards, blending athleticism and technology. It's a sport that takes polo to new heights, literally."
+      }
+   ]
+}

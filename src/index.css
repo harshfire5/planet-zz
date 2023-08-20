@@ -1,13 +1,143 @@
+:root {
+  --surface: #DFD6C8;
+  --primary: #BB86FC;
+  --secondary: #BDBFD2;
+  --surface-layout: #2c2c2c;
+}
+
 body {
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #121212;
+  padding: 20px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  margin: 0;
 }
+
+p {
+  text-align: left;
+}
+
+.error {
+  color: red;
+  padding: 20px;
+}
+
+nav {
+  color: var(--surface);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 10px 0 20px 0;
+}
+
+nav h1 {
+  margin-right: auto;
+  border-top: 3px solid var(--surface);
+  border-bottom: 3px solid var(--surface);
+  padding-bottom: 3px;
+  cursor: pointer;
+}
+
+nav a {
+  display: inline-block;
+  text-decoration: none;
+  padding: 4px 8px 6px;
+  color: var(--surface);
+  border-radius: 5px;
+}
+
+header nav > a.active {
+  background-color: var(--surface-layout);
+}
+
+header nav > a:hover {
+  background-color: var(--surface-layout);
+}
+
+main {
+  color: var(--primary);
+  padding: 10px;
+  text-align: center;
+}
+
+main div > div {
+  background-color: var(--surface-layout);
+  border-radius: 4px;
+}
+
+.pageHeading {
+  padding: 10px 30px;
+  font-size: 42px;
+  margin-bottom: 32px;
+}
+
+.homeDesc {
+  display: flex;
+  /*align-items: center;*/
+  gap: 50px;
+  padding: 40px;
+}
+
+.homeDesc p {
+  color: var(--secondary);
+  font-size: 24px;
+  padding: 20px 100px 0 0;
+}
+
+.homeDesc .pageGreeting {
+  color: var(--primary);
+  font-size: 32px;
+}
+
+.content {
+  padding: 30px;
+}
+
+.content p {
+  padding: 10px;
+  font-size: 18px;
+  line-height: 1.6rem;
+  color: var(--secondary);
+}
+
+.content strong {
+  color: var(--primary);
+  padding-right: 2px;
+}
+
+.ActivityLayout a {
+  border: 2px solid var(--secondary);
+  color: var(--secondary);
+}
+
+.ActivityLayout nav {
+  margin-top: 50px;
+}
+
+.ActivityLayout a:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.ActivityLayout a.active {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.AerialActivities .pageHeading, .Aquavities .pageHeading, .Groundivities .pageHeading {
+  margin-bottom: 0;
+}
+
+.Notfound {
+  text-align: left;
+}
+
+
+
