@@ -1,4 +1,4 @@
-import {NavLink, Outlet, useParams} from "react-router-dom";
+import {NavLink, useParams} from "react-router-dom";
 import AerialActivities from "./AerialActivities";
 import Aquavities from "./Aquavities";
 import Groundivities from "./Groundivities";
@@ -45,7 +45,6 @@ const ActivityLayout = () => {
       {type === "aqua" && <Aquavities />}
       {type === "land" && <Groundivities />}
 
-      {/*<Outlet />*/}
     </div>
   );
 };
@@ -53,22 +52,20 @@ const ActivityLayout = () => {
 export default ActivityLayout;
 
 export const activityLoader = async ({ params }) => {
-  let error = null;
-  let data = null;
   const { type } = params;
-  const allTypes = ["aerial", "aqua", "land"]
-  // console.log(params);
-  if(allTypes.includes(type)) {
+  let data = null;
+  if(type) {
     const res = await fetch('http://localhost:8000/' + type)
       .then(res => {
+        if (!res.ok) {
+          throw Error("No such activity exists!");
+        }
         return res;
       })
-      .catch(e =>
-        error = e.message
-      )
-    if (res.ok) {
-      data = res.json();
-    }
+      .catch(err => {
+        throw err
+      })
+    data = res.json();
   }
-  return [await data, error]
+  return data
 }

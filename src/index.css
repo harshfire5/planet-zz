@@ -2,7 +2,9 @@
   --surface: #DFD6C8;
   --primary: #BB86FC;
   --secondary: #BDBFD2;
-  --surface-layout: #2c2c2c;
+  --nav: #2c2c2c90;
+  --surface-layout: #12121270;
+
 }
 
 body {
@@ -12,20 +14,16 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #121212;
-  padding: 20px;
+  /*padding: 20px;*/
 }
 
 * {
   margin: 0;
+  box-sizing: border-box;
 }
 
 p {
   text-align: left;
-}
-
-.error {
-  color: red;
-  padding: 20px;
 }
 
 nav {
@@ -34,7 +32,8 @@ nav {
   justify-content: center;
   align-items: center;
   gap: 15px;
-  margin: 10px 0 20px 0;
+  padding: 20px;
+  /*margin: 10px 0 20px 0;*/
 }
 
 nav h1 {
@@ -54,11 +53,11 @@ nav a {
 }
 
 header nav > a.active {
-  background-color: var(--surface-layout);
+  background-color: var(--nav);
 }
 
 header nav > a:hover {
-  background-color: var(--surface-layout);
+  background-color: var(--nav);
 }
 
 main {
@@ -67,7 +66,7 @@ main {
   text-align: center;
 }
 
-main div > div {
+main > div > div {
   background-color: var(--surface-layout);
   border-radius: 4px;
 }
@@ -139,5 +138,95 @@ main div > div {
   text-align: left;
 }
 
+.Breadcrumbs{
+  margin: 5px 10px;
+}
 
+.Breadcrumbs .crumb {
+  display: inline-block;
+}
 
+.crumb a {
+  color: var(--primary);
+  margin-right: 5px;
+}
+
+.crumb:last-child a {
+  pointer-events: none;
+  text-decoration: none;
+  color: var(--secondary);
+  margin: 0;
+}
+
+.crumb:after {
+  content: '>';
+  color: var(--secondary);
+  margin-right: 5px;
+}
+
+.crumb:last-child:after {
+  display: none;
+}
+
+.applyContent {
+  padding: 40px;
+  font-size: 20px;
+  line-height: 2rem;
+}
+
+.ApplyForm {
+  padding-top: 50px;
+  text-align: left;
+}
+
+Form > p {
+  padding-bottom: 20px;
+}
+
+Form > div {
+  display: flex;
+  padding: 6px;
+}
+
+.ApplyForm div > input {
+  /*display: inline-block;*/
+  display: block;
+  padding: 4px;
+  width: 300px;
+}
+
+.ApplyForm label {
+  display: block;
+  width: 300px;
+}
+
+.submit {
+  padding: 5px;
+  margin: 30px 5px 10px;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+}
+
+.videoBackground {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.nav-sticky {
+  position: sticky;
+  background-color: #121212f4;
+  top: 0;
+  left: 0;
+}
+
+main {
+  padding: 0 20px;
+}

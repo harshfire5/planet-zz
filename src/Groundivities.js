@@ -1,10 +1,9 @@
 import {useLoaderData} from "react-router-dom";
 
 const Groundivities = () => {
-  const [data, error] = useLoaderData();
+  const data = useLoaderData();
   return (
     <div className="Groundivities">
-      { error && <div className="error"></div> }
       { data &&
         <>
           <div className="pageHeading">Land Lifestyles</div>

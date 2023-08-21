@@ -1,10 +1,9 @@
 import {useLoaderData} from "react-router-dom";
 
 const Aquavities = () => {
-  const [data, error] = useLoaderData();
+  const data = useLoaderData();
   return (
     <div className="Aquavities">
-      { error && <div className="error">{ error }</div> }
       { data &&
         <>
           <div className="pageHeading">Aqua Escapades</div>

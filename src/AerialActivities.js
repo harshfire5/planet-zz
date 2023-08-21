@@ -1,10 +1,9 @@
 import {useLoaderData} from "react-router-dom";
 
 const AerialActivities = () => {
-  const [data, error] = useLoaderData();
+  const data = useLoaderData();
   return (
     <div className="AerialActivities">
-      { error && <div className="error"></div> }
       { data &&
         <>
           <div className="pageHeading">Aerial Adventures</div>

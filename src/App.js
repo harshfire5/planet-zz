@@ -7,10 +7,12 @@ import ActivityLayout, {activityLoader} from "./ActivityLayout";
 //Pages
 import Home from "./Home";
 import About from "./About";
-import AerialActivities from "./AerialActivities";
-import Aquavities from "./Aquavities";
-import Groundivities from "./Groundivities";
+
+//Errors
 import NotFound from "./NotFound";
+import ActivityError from "./ActivityError";
+import Apply from "./Apply";
+import {applyAction} from "./ApplyForm";
 
 function App() {
 
@@ -19,11 +21,12 @@ function App() {
       <Route path="/" element={<RootLayout />}>
         <Route index element={<Home />}></Route>
         <Route path="about" element={<About />}></Route>
-        <Route path="activities/:type?" element={<ActivityLayout />} loader={activityLoader}>
-          {/*<Route path=":type" element={<AerialActivities />} loader={activityLoader}></Route>*/}
-          {/*<Route path="aqua" element={<Aquavities />} loader={activityLoader}></Route>*/}
-          {/*<Route path="land" element={<Groundivities />} loader={activityLoader}></Route>*/}
+        <Route path="activities/:type?"
+               element={<ActivityLayout />}
+               loader={activityLoader}
+        errorElement={<ActivityError />}>
         </Route>
+        <Route path="apply" element={<Apply />} action={applyAction}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Route>
     )
