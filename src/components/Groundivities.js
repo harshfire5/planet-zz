@@ -1,12 +1,9 @@
-import {useLoaderData} from "react-router-dom";
-
-const AerialActivities = () => {
-  const data = useLoaderData();
+const Groundivities = ({ data }) => {
   return (
-    <div className="AerialActivities">
+    <div className="Groundivities">
       { data &&
         <>
-          <div className="pageHeading">Aerial Adventures</div>
+          <div className="pageHeading">Land Lifestyles</div>
           <div className="content">
             <ul>
               {data.map(activity => {
@@ -27,4 +24,4 @@ const AerialActivities = () => {
   );
 };
 
-export default AerialActivities;
+export default Groundivities;

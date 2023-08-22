@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {NavLink, Outlet} from "react-router-dom";
-import Breadcrumbs from "./Breadcrumbs";
+import Breadcrumbs from "../components/Breadcrumbs";
 
 const RootLayout = () => {
   const [navScroll, setNavScroll] = useState("");
@@ -18,7 +18,7 @@ const RootLayout = () => {
 
   return (
     <div className="RootLayout">
-      <video className="videoBackground" src={require("./vid/space.mp4")} autoPlay loop muted />
+      <video className="videoBackground" src={require("../vid/space.mp4")} autoPlay loop muted />
       <header className={navScroll}>
         <nav>
           <h1><NavLink to="/">Planet Zz</NavLink></h1>

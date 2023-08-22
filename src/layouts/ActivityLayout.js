@@ -1,11 +1,25 @@
-import {NavLink, useParams} from "react-router-dom";
-import AerialActivities from "./AerialActivities";
-import Aquavities from "./Aquavities";
-import Groundivities from "./Groundivities";
+import {NavLink, useLoaderData, useNavigation, useParams} from "react-router-dom";
+import AerialActivities from "../components/AerialActivities";
+import Aquavities from "../components/Aquavities";
+import Groundivities from "../components/Groundivities";
+import {useEffect, useRef} from "react";
 
 const ActivityLayout = () => {
   const { type } = useParams();
-  console.log(type);
+  const { state } = useNavigation();
+  const activityRef = useRef(null);
+  console.log(state);
+  const data = useLoaderData();
+
+  useEffect(() => {
+    const types = ["aerial", "aqua", "land"];
+    if(types.includes(type) && state === 'idle') {
+      activityRef.current.scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+  }, [state, type]);
+
   return (
     <div className="ActivityLayout">
       <div className="pageHeading">Activities</div>
@@ -39,12 +53,14 @@ const ActivityLayout = () => {
           <NavLink to="/activities/aqua">Aqua Escapades</NavLink>
           <NavLink to="/activities/land">Land Lifestyles</NavLink>
         </nav>
+
+        {state === 'loading' ? <div className="loader"></div>  :
+        <div ref={activityRef}>
+          {type === "aerial" && state === "idle" && <AerialActivities data={data}/>}
+          {type === "aqua" && state === "idle" && <Aquavities  data={data}/>}
+          {type === "land" && state === "idle" && <Groundivities  data={data}/>}
+        </div>}
       </div>
-
-      {type === "aerial" && <AerialActivities />}
-      {type === "aqua" && <Aquavities />}
-      {type === "land" && <Groundivities />}
-
     </div>
   );
 };

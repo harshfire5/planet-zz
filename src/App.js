@@ -1,18 +1,18 @@
 import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from "react-router-dom";
 
 //Layouts
-import RootLayout from "./RootLayout";
-import ActivityLayout, {activityLoader} from "./ActivityLayout";
+import RootLayout from "./layouts/RootLayout";
+import ActivityLayout, {activityLoader} from "./layouts/ActivityLayout";
 
 //Pages
-import Home from "./Home";
-import About from "./About";
+import Home from "./components/Home";
+import About from "./components/About";
 
 //Errors
-import NotFound from "./NotFound";
-import ActivityError from "./ActivityError";
-import Apply from "./Apply";
-import {applyAction} from "./ApplyForm";
+import NotFound from "./components/NotFound";
+import ActivityError from "./components/ActivityError";
+import Apply from "./components/Apply";
+import {applyAction} from "./components/ApplyForm";
 
 function App() {
 

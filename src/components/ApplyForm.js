@@ -5,7 +5,7 @@ const ApplyForm = () => {
 
   return (
     <div className="ApplyForm">
-      <Form method="post" action="/apply">
+      <Form method="post" action="/src/components/Apply">
         <p><strong>Personal Information</strong></p>
         <div>
           <label htmlFor="name">Full Name:*</label>

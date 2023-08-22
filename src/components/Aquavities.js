@@ -1,7 +1,5 @@
-import {useLoaderData} from "react-router-dom";
+const Aquavities = ({ data }) => {
 
-const Aquavities = () => {
-  const data = useLoaderData();
   return (
     <div className="Aquavities">
       { data &&
