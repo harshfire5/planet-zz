@@ -1,11 +1,14 @@
-import {useRouteError} from "react-router-dom";
+import {Link} from "react-router-dom";
+import React from "react";
 
 const ActivityError = () => {
-  const error = useRouteError()
   return (
-    <div className="ActivityError">
-      <div className="pageHeading">Error: Not Found</div>
-      <div className="content">{ error.message }</div>
+    <div className="ActivityError Notfound">
+      <div className="pageHeading">Activity Not Found</div>
+      <div className="content">
+        <p>Sorry, no such activity exists!</p>
+        <p>Go back to <Link to="/activities">Acitivities</Link>.</p>
+      </div>
     </div>
   );
 };

@@ -1,8 +1,7 @@
 import React from 'react';
-import {Link, useLocation} from "react-router-dom";
+import {Link} from "react-router-dom";
 
-const Breadcrumbs = () => {
-  const location = useLocation();
+const Breadcrumbs = ({location}) => {
   let currentPath = "";
   const crumbs = location.pathname.split('/')
     .filter(crumb => crumb !== '')

@@ -3,8 +3,7 @@
   --primary: #BB86FC;
   --secondary: #BDBFD2;
   --nav: #2c2c2c90;
-  --surface-layout: #12121270;
-
+  --surface-layout: #2c2c2c70;
 }
 
 body {
@@ -62,7 +61,6 @@ header nav > a:hover {
 
 main {
   color: var(--primary);
-  padding: 10px;
   text-align: center;
 }
 
@@ -130,7 +128,7 @@ main > div > div {
   border-color: var(--primary);
 }
 
-.AerialActivities .pageHeading, .Aquavities .pageHeading, .Groundivities .pageHeading {
+.Activity .pageHeading {
   margin-bottom: 0;
 }
 
@@ -139,7 +137,7 @@ main > div > div {
 }
 
 .Breadcrumbs{
-  margin: 5px 10px;
+  margin: 5px 30px 20px;
 }
 
 .Breadcrumbs .crumb {
@@ -210,15 +208,15 @@ Form > div {
   color: red;
 }
 
-.videoBackground {
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
+/*.videoBackground {*/
+/*  width: 100vw;*/
+/*  height: 100vh;*/
+/*  object-fit: cover;*/
+/*  position: fixed;*/
+/*  top: 0;*/
+/*  left: 0;*/
+/*  z-index: -1;*/
+/*}*/
 
 .nav-sticky {
   position: sticky;
@@ -228,7 +226,7 @@ Form > div {
 }
 
 main {
-  padding: 0 20px;
+  padding: 0 30px;
 }
 
 .loader {
