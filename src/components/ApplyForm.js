@@ -1,4 +1,4 @@
-import {Form, Navigate, useActionData} from "react-router-dom";
+import {Form, useActionData} from "react-router-dom";
 import {useEffect, useState} from "react";
 import Modal from "./Modal";
 
@@ -15,9 +15,13 @@ const ApplyForm = () => {
     }
   }, [data]);
 
+  function changeShowModal(state) {
+    setShowModal(state);
+  }
+
   return (
     <div className="ApplyForm">
-      <Modal showModal={showModal} setShowModal={setShowModal} />
+      <Modal showModal={showModal} changeShowModal={changeShowModal} />
       <Form method="post" action="/apply">
         <p><strong>Personal Information</strong></p>
         <div>
@@ -57,10 +61,6 @@ export const applyAction = async ({ request }) => {
     console.log(e.message)
     error = e.message
   })
-
-  // if(error) {
-  //   return error;
-  // }
 
   return {
     success: success,

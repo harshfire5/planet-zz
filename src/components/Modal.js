@@ -22,11 +22,11 @@ const modalVariant = {
   }
 }
 
-const Modal = ({ showModal, setShowModal }) => {
+const Modal = ({ showModal, changeShowModal }) => {
   const navigate = useNavigate();
 
   const handleSubmit = () => {
-    setShowModal(false);
+    changeShowModal(false);
   }
 
   return (

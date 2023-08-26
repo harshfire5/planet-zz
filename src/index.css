@@ -12,6 +12,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /*shape-rendering: crispEdges;*/
   background-color: #121212;
   /*padding: 20px;*/
 }
@@ -25,6 +26,28 @@ p {
   text-align: left;
 }
 
+svg text {
+  font-size: 24px;
+  font-weight: bold;
+  fill: var(--surface);
+}
+
+svg line {
+  stroke: var(--surface);
+}
+
+svg, svg * {
+  display: inline-block;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background: #121212f4;
+}
+
 nav {
   color: var(--surface);
   display: flex;
@@ -35,20 +58,23 @@ nav {
   /*margin: 10px 0 20px 0;*/
 }
 
-nav h1 {
+nav div {
   margin-right: auto;
-  border-top: 3px solid var(--surface);
-  border-bottom: 3px solid var(--surface);
-  padding-bottom: 3px;
+  /*border-top: 3px solid var(--surface);*/
+  /*border-bottom: 3px solid var(--surface);*/
   cursor: pointer;
 }
 
-nav a {
+nav > a {
   display: inline-block;
   text-decoration: none;
   padding: 4px 8px 6px;
   color: var(--surface);
   border-radius: 5px;
+}
+
+.nav-sticky {
+
 }
 
 header nav > a.active {
@@ -217,13 +243,6 @@ Form > div {
 /*  left: 0;*/
 /*  z-index: -1;*/
 /*}*/
-
-.nav-sticky {
-  position: sticky;
-  background-color: #121212f4;
-  top: 0;
-  left: 0;
-}
 
 main {
   padding: 0 30px;
