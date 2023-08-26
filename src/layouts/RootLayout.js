@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {NavLink, useLocation, useOutlet, useParams} from "react-router-dom";
 import Breadcrumbs from "../components/Breadcrumbs";
 import {AnimatePresence, motion} from "framer-motion";
-import useTypes from "../useTypes";
+import useTypes from "../hooks/useTypes";
 
 const headingVariant = {
   "hidden": {

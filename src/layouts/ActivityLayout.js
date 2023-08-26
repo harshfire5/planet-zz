@@ -3,7 +3,7 @@ import {useEffect, useRef, useState} from "react";
 import ActivityError from "../components/ActivityError";
 import {flushSync} from "react-dom";
 import Activity from "../components/Activity";
-import useTypes from "../useTypes";
+import useTypes from "../hooks/useTypes";
 
 const ActivityLayout = () => {
   const { type } = useParams();
