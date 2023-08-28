@@ -4,6 +4,27 @@ import ActivityError from "../components/ActivityError";
 import {flushSync} from "react-dom";
 import Activity from "../components/Activity";
 import useTypes from "../hooks/useTypes";
+import {motion} from "framer-motion";
+
+const loaderVariant = {
+  animation: {
+    x: [-20, 20],
+    y: [0, -25],
+    transition: {
+      x: {
+        duration: 0.5,
+        repeat: Infinity,
+        repeatType: 'reverse'
+      },
+      y: {
+        duration: 0.25,
+        repeat: Infinity,
+        repeatType: 'reverse',
+        ease: 'easeOut'
+      }
+    }
+  }
+}
 
 const ActivityLayout = () => {
   const { type } = useParams();
@@ -77,7 +98,11 @@ const ActivityLayout = () => {
             <NavLink to="/activities/land">Land Lifestyles</NavLink>
           </nav>
 
-          {loading && <div className="loader"></div>}
+          {loading && <motion.div
+            className="loader"
+            variants={loaderVariant}
+            animate="animation"
+          />}
           {error && <div className="error">{error}</div>}
 
           {data &&

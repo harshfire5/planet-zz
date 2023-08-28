@@ -1,9 +1,9 @@
 :root {
-  --surface: #DFD6C8;
-  --primary: #BB86FC;
+  --surface: #1285bbf5;
+  --primary: #fff;
   --secondary: #BDBFD2;
   --nav: #2c2c2c90;
-  --surface-layout: #2c2c2c70;
+  --surface-layout: #008bcc70;
 }
 
 body {
@@ -13,7 +13,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /*shape-rendering: crispEdges;*/
-  background-color: #121212;
+  background: linear-gradient(90deg, rgb(77, 184, 217) 5%, rgb(133, 206, 224) 50%, rgb(167, 199, 231) 85%);
   /*padding: 20px;*/
 }
 
@@ -29,11 +29,11 @@ p {
 svg text {
   font-size: 24px;
   font-weight: bold;
-  fill: var(--surface);
+  fill: var(--primary);
 }
 
 svg line {
-  stroke: var(--surface);
+  stroke: var(--primary);
 }
 
 svg, svg * {
@@ -45,32 +45,31 @@ header {
   top: 0;
   left: 0;
   z-index: 1;
-  background: #121212f4;
+  background: #1285bbf5;
 }
 
 nav {
-  color: var(--surface);
+  /*color: var(--surface);*/
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 15px;
-  padding: 20px;
+  padding: 16px 35px 14px 25px;
   /*margin: 10px 0 20px 0;*/
 }
 
 nav div {
   margin-right: auto;
-  /*border-top: 3px solid var(--surface);*/
-  /*border-bottom: 3px solid var(--surface);*/
   cursor: pointer;
 }
 
 nav > a {
   display: inline-block;
   text-decoration: none;
-  padding: 4px 8px 6px;
-  color: var(--surface);
+  font-weight: bold;
+  padding: 8px 14px 10px;
   border-radius: 5px;
+  color: var(--primary);
 }
 
 .nav-sticky {
@@ -78,27 +77,29 @@ nav > a {
 }
 
 header nav > a.active {
-  background-color: var(--nav);
+  background-color: var(--primary);
+  color: var(--surface)
 }
 
-header nav > a:hover {
+nav > a:hover {
   background-color: var(--nav);
 }
 
 main {
   color: var(--primary);
-  text-align: center;
+  text-align: left;
 }
 
 main > div > div {
-  background-color: var(--surface-layout);
+  background: linear-gradient(45deg,#008bcc,rgba(0,139,204,.738) 25%,rgba(0,139,204,.541) 40%,rgba(0,139,204,.46) 52%,rgba(0,139,204,.4) 60%,rgba(0,139,204,.34) 80%,rgba(0,139,204,.3) 81%,rgba(0,139,204,.25) 82%,rgba(0,139,204,.2));
   border-radius: 4px;
 }
 
 .pageHeading {
-  padding: 10px 30px;
+  padding: 12px 50px;
   font-size: 42px;
   margin-bottom: 32px;
+  background: linear-gradient(45deg,#008bcc,rgba(0,139,204,.738) 19%,rgba(0,139,204,.541) 34%,rgba(0,139,204,.382) 47%,rgba(0,139,204,.278) 56.5%,rgba(0,139,204,.194) 65%,rgba(0,139,204,.126) 73%,rgba(0,139,204,.075) 80.2%,rgba(0,139,204,.042) 86.1%,rgba(0,139,204,.021) 91%,rgba(0,139,204,.008) 95.2%,rgba(0,139,204,.002) 98.2%,rgba(0,139,204,0));
 }
 
 .homeDesc {
@@ -109,7 +110,7 @@ main > div > div {
 }
 
 .homeDesc p {
-  color: var(--secondary);
+  color: var(--primary);
   font-size: 24px;
   padding: 20px 100px 0 0;
 }
@@ -120,14 +121,14 @@ main > div > div {
 }
 
 .content {
-  padding: 30px;
+  padding: 40px;
 }
 
 .content p {
   padding: 10px;
   font-size: 18px;
   line-height: 1.6rem;
-  color: var(--secondary);
+  color: var(--primary);
 }
 
 .content strong {
@@ -136,8 +137,8 @@ main > div > div {
 }
 
 .ActivityLayout a {
-  border: 2px solid var(--secondary);
-  color: var(--secondary);
+  border: 2px solid var(--primary);
+  color: var(--primary);
 }
 
 .ActivityLayout nav {
@@ -145,13 +146,13 @@ main > div > div {
 }
 
 .ActivityLayout a:hover {
-  color: var(--primary);
-  border-color: var(--primary);
+  color: var(--surface);
+  background: var(--primary);
 }
 
 .ActivityLayout a.active {
-  color: var(--primary);
-  border-color: var(--primary);
+  color: var(--surface);
+  background: var(--primary);
 }
 
 .Activity .pageHeading {
@@ -163,7 +164,7 @@ main > div > div {
 }
 
 .Breadcrumbs{
-  margin: 5px 30px 20px;
+  margin: 15px 30px 20px;
 }
 
 .Breadcrumbs .crumb {
@@ -178,13 +179,13 @@ main > div > div {
 .crumb:last-child a {
   pointer-events: none;
   text-decoration: none;
-  color: var(--secondary);
+  color: var(--primary);
   margin: 0;
 }
 
 .crumb:after {
   content: '>';
-  color: var(--secondary);
+  color: var(--primary);
   margin-right: 5px;
 }
 
@@ -250,23 +251,11 @@ main {
 
 .loader {
   display: inline-block;
-  height: 30px;
-  width: 30px;
-  margin: 20px 0;
-  border: 2px solid #f3f3f3;
-  border-top: 2px solid #555;
+  height: 10px;
+  width: 10px;
+  margin: 40px auto 10px;
   border-radius: 50%;
-  -webkit-animation: spin 1s linear infinite;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  background: var(--primary);
 }
 
 .backdrop {

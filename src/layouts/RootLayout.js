@@ -39,7 +39,12 @@ const lineVariantsMiddle = {
     pathLength: 1,
     transition: {
       delay: 0.5,
-      duration: 0.5,
+      opacity: {
+        duration: 0.5,
+      },
+      pathLength: {
+        duration: 0.4
+      }
     }
   }
 }
@@ -81,7 +86,7 @@ const RootLayout = () => {
   const { isRightType } = useTypes(type);
   const outlet = useOutlet();
   const [isFirstRender, setIsFirstRender] = useState(true);
-  console.log(window.screen.availHeight);
+  // console.log(window.screen.availHeight);
   return (
     <div className="RootLayout">
       <header>
@@ -89,6 +94,9 @@ const RootLayout = () => {
           variants={navVariant}
           initial="hidden"
           animate="visible"
+          drag
+          dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
+          dragElastic={0.8}
         >
           <div>
             <NavLink to="/">
@@ -113,10 +121,10 @@ const RootLayout = () => {
               </svg>
             </NavLink>
           </div>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="about">About</NavLink>
-          <NavLink to="activities">Activities</NavLink>
-          <NavLink to="apply">Apply</NavLink>
+          <NavLink to="/">HOME</NavLink>
+          <NavLink to="about">ABOUT</NavLink>
+          <NavLink to="activities">ACTIVITIES</NavLink>
+          <NavLink to="apply">APPLY</NavLink>
         </motion.nav>
       </header>
       <AnimatePresence mode="wait" onExitComplete={() => setIsFirstRender(false)}>
@@ -125,10 +133,10 @@ const RootLayout = () => {
           variants={contentVariant}
           location={location}
           key={location.pathname}
-          initial={ !isRightType() ? "hidden" : "" }
-          animate={ !isRightType() ? "visible": "" }
+          initial={ isFirstRender || !isRightType() ? "hidden" : "" }
+          animate={ isFirstRender || !isRightType() ? "visible": "" }
           transition={ isFirstRender ? {delay: 1.4, duration: 0.7} : {duration: 0.7} }
-          exit="exit"
+          exit={ location.pathname !== '/activities' && !isRightType() ? "exit": "" }
         >
           <Breadcrumbs location={location} />
           <main>
