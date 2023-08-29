@@ -65,6 +65,26 @@
       "desc": "Compete in an intense, fast-paced game of polo played on anti-gravity hoverboards, blending athleticism and technology. It's a sport that takes polo to new heights, literally."
     }
   ],
+  "activities": [
+    {
+      "id": 0,
+      "name": "Aerial Adventures",
+      "desc": "Reach for the skies and experience gravity-defying thrills that will leave you breathless.",
+      "url": "img/aerial.jpg"
+    },
+    {
+      "id": 1,
+      "name": "Aqua Escapades",
+      "desc": "Plunge into the deep, where endless mysteries await your exploration.",
+      "url": "img/aqua.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Land Lifestyles",
+      "desc": "Explore our unconventional terrestrial experiences, where reality is what you make it.",
+      "url": "img/land.jpg"
+    }
+  ],
   "apply": [
     {
       "name": "dedw",

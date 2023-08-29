@@ -133,12 +133,12 @@ const RootLayout = () => {
           variants={contentVariant}
           location={location}
           key={location.pathname}
-          initial={ isFirstRender || !isRightType() ? "hidden" : "" }
-          animate={ isFirstRender || !isRightType() ? "visible": "" }
-          transition={ isFirstRender ? {delay: 1.4, duration: 0.7} : {duration: 0.7} }
+          initial={ location.pathname !== '/activities' && !isRightType() ? "hidden" : "" }
+          animate={ location.pathname !== '/activities' && !isRightType() ? "visible": "" }
+          transition={ isFirstRender && location.pathname !== '/activities' ? {delay: 1.4, duration: 0.7} : {duration: 0.7} }
           exit={ location.pathname !== '/activities' && !isRightType() ? "exit": "" }
         >
-          <Breadcrumbs location={location} />
+          {/*<Breadcrumbs location={location} />*/}
           <main>
             {outlet}
           </main>

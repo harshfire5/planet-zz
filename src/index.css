@@ -6,15 +6,45 @@
   --surface-layout: #008bcc70;
 }
 
+@font-face {
+  font-family: Blanka;
+  src: url("fonts/Blanka-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Beyno;
+  src: url("fonts/BEYNO-Test-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Nasalization;
+  src: url("fonts/nasalization-rg.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Strange;
+  src: url("fonts/stange-stange-400.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Semox;
+  src: url("fonts/semox-semox-400.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Due;
+  src: url("fonts/due-form-due-form-svg-400.otf") format("opentype");
+}
+
+
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: Nasalization, Beyno, Blanka, Due, Semox, Strange, serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /*shape-rendering: crispEdges;*/
   background: linear-gradient(90deg, rgb(77, 184, 217) 5%, rgb(133, 206, 224) 50%, rgb(167, 199, 231) 85%);
   /*padding: 20px;*/
+  overflow-x: hidden;
 }
 
 * {
@@ -54,7 +84,7 @@ nav {
   justify-content: center;
   align-items: center;
   gap: 15px;
-  padding: 16px 35px 14px 25px;
+  padding: 12px 35px 10px 25px;
   /*margin: 10px 0 20px 0;*/
 }
 
@@ -72,10 +102,6 @@ nav > a {
   color: var(--primary);
 }
 
-.nav-sticky {
-
-}
-
 header nav > a.active {
   background-color: var(--primary);
   color: var(--surface)
@@ -87,7 +113,11 @@ nav > a:hover {
 
 main {
   color: var(--primary);
-  text-align: left;
+  text-align: center;
+}
+
+main > div {
+  padding: 0 30px;
 }
 
 main > div > div {
@@ -99,7 +129,7 @@ main > div > div {
   padding: 12px 50px;
   font-size: 42px;
   margin-bottom: 32px;
-  background: linear-gradient(45deg,#008bcc,rgba(0,139,204,.738) 19%,rgba(0,139,204,.541) 34%,rgba(0,139,204,.382) 47%,rgba(0,139,204,.278) 56.5%,rgba(0,139,204,.194) 65%,rgba(0,139,204,.126) 73%,rgba(0,139,204,.075) 80.2%,rgba(0,139,204,.042) 86.1%,rgba(0,139,204,.021) 91%,rgba(0,139,204,.008) 95.2%,rgba(0,139,204,.002) 98.2%,rgba(0,139,204,0));
+  background: linear-gradient(0deg, #008bcc,rgba(0,139,204,.738) 19%,rgba(0,139,204,.541) 34%,rgba(0,139,204,.382) 47%,rgba(0,139,204,.278) 56.5%,rgba(0,139,204,.194) 65%,rgba(0,139,204,.126) 73%,rgba(0,139,204,.075) 80.2%,rgba(0,139,204,.042) 86.1%,rgba(0,139,204,.021) 91%,rgba(0,139,204,.008) 95.2%,rgba(0,139,204,.002) 98.2%,rgba(0,139,204,0));
 }
 
 .homeDesc {
@@ -136,13 +166,23 @@ main > div > div {
   padding-right: 2px;
 }
 
+.ActivityLayout {
+  padding: 0;
+}
+
+
+.ActivityLayout nav {
+  position: sticky;
+  top: 73px;
+  left: 0;
+  padding: 15px;
+  background: #0d5c80f0;
+  z-index: 1;
+}
+
 .ActivityLayout a {
   border: 2px solid var(--primary);
   color: var(--primary);
-}
-
-.ActivityLayout nav {
-  margin-top: 50px;
 }
 
 .ActivityLayout a:hover {
@@ -153,6 +193,91 @@ main > div > div {
 .ActivityLayout a.active {
   color: var(--surface);
   background: var(--primary);
+}
+
+.ActivityLayout .video {
+  width: 100vw;
+  height: 90vh;
+  object-fit: cover;
+}
+
+.ActivityLayout div {
+  display: block;
+  position: relative;
+}
+
+.ActivityLayout .videoHeading {
+  /*font-family: Blanka, serif;*/
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  margin-bottom: 0;
+  font-size: 42px;
+  text-align: left;
+  padding: 9vh 8vh 8vh;
+  background: linear-gradient(0deg, #008bcc,rgba(0,139,204,.738) 28%,rgba(0,139,204,.541) 44%,rgba(0,139,204,.482) 57%,rgba(0,139,204,.378) 66.5%,rgba(0,139,204,.294) 75%,rgba(0,139,204,.226) 83%,rgba(0,139,204,.025));
+}
+
+.ActivityLayout img {
+  display: block;
+  width: 100vw;
+  height: 80vh;
+  object-fit: cover;
+}
+
+.ActivityLayout .imgLayer {
+  max-width: 71vw;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  border-radius: 4px;
+  background: #0d2844a1;
+  padding: 12vh;
+}
+
+.ActivityLayout .imgContent {
+  display: block;
+  transform-origin: left center;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.ActivityLayout .imgContent:hover {
+  transform: scale(1.03);
+}
+
+.ActivityLayout .imgHeading {
+  /*font-family: Beyno, serif;*/
+  position: absolute;
+  bottom: 12vh;
+  left: 3vw;
+  font-size: 42px;
+}
+
+.ActivityLayout .imgDesc {
+  position: absolute;
+  bottom: 7vh;
+  left: 3vw;
+  font-size: 22px;
+}
+
+.ActivityLayout button {
+  position: absolute;
+  bottom: 94px;
+  left: 30vw;
+  cursor: pointer;
+  color: var(--primary);
+  background-color: var(--surface);
+  border: 2px solid var(--surface);
+  border-radius: 4px;
+  padding: 5px 10px;
+}
+
+.ActivityLayout button:hover {
+  background-color: #116b95;
+  border-color: #116b95;
 }
 
 .Activity .pageHeading {
@@ -233,20 +358,6 @@ Form > div {
 
 .error {
   color: red;
-}
-
-/*.videoBackground {*/
-/*  width: 100vw;*/
-/*  height: 100vh;*/
-/*  object-fit: cover;*/
-/*  position: fixed;*/
-/*  top: 0;*/
-/*  left: 0;*/
-/*  z-index: -1;*/
-/*}*/
-
-main {
-  padding: 0 30px;
 }
 
 .loader {
