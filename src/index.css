@@ -42,7 +42,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /*shape-rendering: crispEdges;*/
-  background: linear-gradient(90deg, rgb(77, 184, 217) 5%, rgb(133, 206, 224) 50%, rgb(167, 199, 231) 85%);
+  background: linear-gradient(90deg, rgb(59, 139, 210) 5%, rgb(72, 180, 213) 50%, rgb(167, 199, 231) 85%);
   /*padding: 20px;*/
   overflow-x: hidden;
 }
@@ -57,13 +57,14 @@ p {
 }
 
 svg text {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   fill: var(--primary);
 }
 
 svg line {
   stroke: var(--primary);
+  stroke-width: 2.5;
 }
 
 svg, svg * {
@@ -71,21 +72,20 @@ svg, svg * {
 }
 
 header {
-  position: sticky;
+  position: fixed;
+  width: 100%;
   top: 0;
   left: 0;
   z-index: 1;
-  background: #1285bbf5;
+  background: #1285bb40;
 }
 
 nav {
-  /*color: var(--surface);*/
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 15px;
-  padding: 12px 35px 10px 25px;
-  /*margin: 10px 0 20px 0;*/
+  padding: 3px 35px 3px 25px;
 }
 
 nav div {
@@ -96,8 +96,9 @@ nav div {
 nav > a {
   display: inline-block;
   text-decoration: none;
+  font-size: 15px;
   font-weight: bold;
-  padding: 8px 14px 10px;
+  padding: 10px 14px 9px;
   border-radius: 5px;
   color: var(--primary);
 }
@@ -120,10 +121,10 @@ main > div {
   padding: 0 30px;
 }
 
-main > div > div {
-  background: linear-gradient(45deg,#008bcc,rgba(0,139,204,.738) 25%,rgba(0,139,204,.541) 40%,rgba(0,139,204,.46) 52%,rgba(0,139,204,.4) 60%,rgba(0,139,204,.34) 80%,rgba(0,139,204,.3) 81%,rgba(0,139,204,.25) 82%,rgba(0,139,204,.2));
-  border-radius: 4px;
-}
+/*main > div > div {*/
+  /*background: linear-gradient(45deg,#008bcc,rgba(0,139,204,.738) 25%,rgba(0,139,204,.541) 40%,rgba(0,139,204,.46) 52%,rgba(0,139,204,.4) 60%,rgba(0,139,204,.34) 80%,rgba(0,139,204,.3) 81%,rgba(0,139,204,.25) 82%,rgba(0,139,204,.2));*/
+  /*border-radius: 4px;*/
+/*}*/
 
 .pageHeading {
   padding: 12px 50px;
@@ -172,32 +173,42 @@ main > div > div {
 
 
 .ActivityLayout nav {
-  position: sticky;
-  top: 73px;
+  position: fixed;
+  width: 100%;
+  top: 80px;
   left: 0;
-  padding: 15px;
-  background: #0d5c80f0;
+  padding: 0;
+  background: #0d5c8000;
   z-index: 1;
 }
 
-.ActivityLayout a {
-  border: 2px solid var(--primary);
+.ActivityLayout button {
+  display: inline-block;
+  font-family: Nasalization, serif;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px 14px;
+  border-radius: 5px;
+  background: #44444480;
+  cursor: pointer;
+  border: transparent;
   color: var(--primary);
 }
 
-.ActivityLayout a:hover {
+.ActivityLayout nav > button:hover {
   color: var(--surface);
   background: var(--primary);
 }
 
-.ActivityLayout a.active {
+.ActivityLayout nav > button.active {
   color: var(--surface);
   background: var(--primary);
 }
 
 .ActivityLayout .video {
-  width: 100vw;
-  height: 90vh;
+  width: 100%;
+  /*height: 714px;*/
+  height: 772px;
   object-fit: cover;
 }
 
@@ -213,16 +224,16 @@ main > div > div {
   bottom: 0;
   left: 0;
   margin-bottom: 0;
-  font-size: 42px;
+  font-size: 38px;
   text-align: left;
-  padding: 9vh 8vh 8vh;
+  padding: 50px;
   background: linear-gradient(0deg, #008bcc,rgba(0,139,204,.738) 28%,rgba(0,139,204,.541) 44%,rgba(0,139,204,.482) 57%,rgba(0,139,204,.378) 66.5%,rgba(0,139,204,.294) 75%,rgba(0,139,204,.226) 83%,rgba(0,139,204,.025));
 }
 
 .ActivityLayout img {
   display: block;
-  width: 100vw;
-  height: 80vh;
+  width: 100%;
+  height: 777px;
   object-fit: cover;
 }
 
@@ -263,10 +274,12 @@ main > div > div {
   font-size: 22px;
 }
 
-.ActivityLayout button {
+.ActivityLayout .detailsButton {
   position: absolute;
   bottom: 94px;
   left: 30vw;
+  /*font-family: serif;*/
+  font-size: 12px;
   cursor: pointer;
   color: var(--primary);
   background-color: var(--surface);
@@ -275,9 +288,15 @@ main > div > div {
   padding: 5px 10px;
 }
 
-.ActivityLayout button:hover {
+.ActivityLayout .detailsButton:hover {
   background-color: #116b95;
   border-color: #116b95;
+}
+
+.ActivityLayout .loading {
+  position: absolute;
+  top: 20%;
+  left: 49%;
 }
 
 .Activity .pageHeading {
@@ -369,14 +388,14 @@ Form > div {
   background: var(--primary);
 }
 
-.backdrop {
+div.backdrop {
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 1;
+  z-index: 2;
 }
 
 .modal {

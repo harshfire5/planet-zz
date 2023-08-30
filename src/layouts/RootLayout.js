@@ -86,10 +86,10 @@ const RootLayout = () => {
   const { isRightType } = useTypes(type);
   const outlet = useOutlet();
   const [isFirstRender, setIsFirstRender] = useState(true);
-  // console.log(window.screen.availHeight);
+  console.log(window.screen.availHeight);
   return (
-    <div className="RootLayout">
-      <header>
+    <div id="myRoot"className="RootLayout">
+      <header id="header">
         <motion.nav
           variants={navVariant}
           initial="hidden"
@@ -100,20 +100,20 @@ const RootLayout = () => {
         >
           <div>
             <NavLink to="/">
-              <svg height="47" width="130">
-                <motion.line x1="0" y1="0" x2="124" y2="0" strokeWidth="5.5"
+              <svg height="48" width="116">
+                <motion.line x1="0" y1="10" x2="116" y2="10"
                              variants={lineVariants}
                 />
-                <motion.line x1="0" y1="46" x2="62" y2="23" strokeWidth="3"
+                <motion.line x1="0" y1="44" x2="58" y2="27"
                              variants={lineVariantsMiddle}
                 />
-                <motion.line x1="124" y1="0" x2="62" y2="23" strokeWidth="3"
+                <motion.line x1="116" y1="10" x2="58" y2="27"
                              variants={lineVariantsMiddle}
                 />
-                <motion.line x1="124" y1="46" x2="0" y2="46" strokeWidth="3"
+                <motion.line x1="116" y1="44" x2="0" y2="44"
                              variants={lineVariants}
                 />
-                <motion.text x="10" y="32"
+                <motion.text x="6" y="34"
                       variants={textVariant}
                 >
                   Planet Zz

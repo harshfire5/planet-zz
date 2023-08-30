@@ -5,6 +5,7 @@ import {flushSync} from "react-dom";
 import Activity from "../components/Activity";
 import useTypes from "../hooks/useTypes";
 import {motion} from "framer-motion";
+import activity from "../components/Activity";
 
 const loaderVariant = {
   animation: {
@@ -31,10 +32,17 @@ const ActivityLayout = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(null);
   const [error, setError] = useState(null);
-  const activityRef = useRef(null);
+  const buttonRef = useRef([]);
+  const activityRef = useRef([]);
+  const activities = [
+    "Aerial Adventures",
+    "Aqua Escapades",
+    "Land Lifestyles"
+  ];
   // const {types, isRightType} = useTypes(type);
 
   useEffect(() => {
+    console.log(window.innerHeight);
       setError(null);
       setLoading(true);
       fetch('http://localhost:8000/activities')
@@ -45,10 +53,10 @@ const ActivityLayout = () => {
           return res.json();
         }).then(val => {
         setLoading(false);
-        flushSync(() =>
+        // flushSync(() =>
           setData(val)
-        )
-        // console.log(data)
+        // )
+        // console.log(activityRef)
         // activityRef.current.scrollIntoView({
         //   behavior: "smooth"
         // });
@@ -59,6 +67,23 @@ const ActivityLayout = () => {
           setError(err.message)
         })
   }, []);
+
+  const handleButton = (index) => {
+    if(data) {
+      console.log(buttonRef.current);
+      buttonRef.current[index].className = "active";
+      for (let i = 0; i < buttonRef.current.length; i++) {
+        if (i !== index) {
+          buttonRef.current[i].className = "";
+        }
+      }
+      console.log(activityRef.current)
+      activityRef.current[index].scrollIntoView({
+        behavior: "smooth",
+        block: "end"
+      });
+    }
+  }
 
   return type ? (
     <ActivityError />
@@ -111,30 +136,41 @@ const ActivityLayout = () => {
 
         {/*    </div>}*/}
         {/*</div>*/}
-        {loading && <motion.div
-            className="loader"
-            variants={loaderVariant}
-            animate="animation"
-          />}
+
+        {loading &&
+          <div className="backdrop">
+            <div className="loading">
+              <motion.div
+                className="loader"
+                variants={loaderVariant}
+                animate="animation"
+              />
+              <p>Loading</p>
+            </div>
+          </div>
+        }
+
         <nav>
-          {error && <div className="error">{error}</div>}
-          { data && data.map(activity => (
-              <a key={activity.id} href="#">{activity.name}</a>
+          {activities.map((activity, i) => (
+              <button type="button"
+                      key={i}
+                      ref={ref => buttonRef.current[i] = ref}
+                      onClick={() => handleButton(i)}
+              >{activity}</button>
           ))}
         </nav>
+        {error && <div className="error">{error}</div>}
 
-        { data && data.map(activity => (
-          <div key={activity.id}>
-            <div ref={activityRef}>
-              <img src={require("../"+activity.url)} alt={activity.name} />
-              <div className="imgLayer"></div>
-              <div className="imgContent">
-                <p className="imgHeading">{activity.name}</p>
-                <p className="imgDesc">
-                  {activity.desc}
-                </p>
-                <button className="detailsButton" type="button">More Info</button>
-              </div>
+        {data && data.map((activity, i) => (
+          <div ref={ref => activityRef.current[i] = ref} key={i}>
+            <img src={require("../"+activity.url)} alt={activity.name} />
+            <div className="imgLayer"></div>
+            <div className="imgContent">
+              <p className="imgHeading">{activity.name}</p>
+              <p className="imgDesc">
+                {activity.desc}
+              </p>
+              <button className="detailsButton" type="button">More Info</button>
             </div>
           </div>
         ))}
