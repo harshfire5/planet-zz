@@ -1,11 +1,10 @@
 import {NavLink, useParams} from "react-router-dom";
-import {useEffect, useRef, useState} from "react";
+import {useCallback, useEffect, useRef, useState} from "react";
 import ActivityError from "../components/ActivityError";
 import {flushSync} from "react-dom";
 import Activity from "../components/Activity";
 import useTypes from "../hooks/useTypes";
 import {motion} from "framer-motion";
-import activity from "../components/Activity";
 
 const loaderVariant = {
   animation: {
@@ -27,6 +26,12 @@ const loaderVariant = {
   }
 }
 
+const activities = [
+  "Aerial Adventures",
+  "Aqua Escapades",
+  "Land Lifestyles"
+];
+
 const ActivityLayout = () => {
   const { type } = useParams();
   const [data, setData] = useState(null);
@@ -34,15 +39,33 @@ const ActivityLayout = () => {
   const [error, setError] = useState(null);
   const buttonRef = useRef([]);
   const activityRef = useRef([]);
-  const activities = [
-    "Aerial Adventures",
-    "Aqua Escapades",
-    "Land Lifestyles"
-  ];
-  // const {types, isRightType} = useTypes(type);
+  const videoRef = useRef(null);
+
+  const performScroll = useCallback((index) => {
+    console.log("index:",index);
+    let ref = null;
+    if (index === -1) {
+      ref = videoRef.current;
+    } else {
+      buttonRef.current[index].className = "active";
+      ref = activityRef.current[index];
+    }
+    // console.log("ref:",ref);
+    ref.scrollIntoView({
+      behavior: "smooth",
+      block: "end"
+    });
+
+    for(let i = 0; i < buttonRef.current.length; i++) {
+      if(i !== index) {
+        buttonRef.current[i].className = "";
+      }
+    }
+  }, []);
 
   useEffect(() => {
-    console.log(window.innerHeight);
+    // console.log(window.innerHeight);
+      document.body.style.overflowY = "hidden";
       setError(null);
       setLoading(true);
       fetch('http://localhost:8000/activities')
@@ -53,13 +76,8 @@ const ActivityLayout = () => {
           return res.json();
         }).then(val => {
         setLoading(false);
-        // flushSync(() =>
-          setData(val)
-        // )
-        // console.log(activityRef)
-        // activityRef.current.scrollIntoView({
-        //   behavior: "smooth"
-        // });
+        setData(val);
+        document.body.style.overflowY = "";
       })
         .catch(err => {
           setLoading(false);
@@ -68,28 +86,51 @@ const ActivityLayout = () => {
         })
   }, []);
 
-  const handleButton = (index) => {
-    if(data) {
-      console.log(buttonRef.current);
-      buttonRef.current[index].className = "active";
-      for (let i = 0; i < buttonRef.current.length; i++) {
-        if (i !== index) {
-          buttonRef.current[i].className = "";
+  useEffect(() => {
+    let current = -1;
+    let isScrolling = false;
+    let lastScrollPos = window.scrollY;
+
+    const performWait = () => {
+      document.body.style.overflowY = "hidden";
+      performScroll(current);
+      setTimeout(() => {
+        // console.log("Last Position:", lastScrollPos);
+        // console.log("Compare Position:", (current+1) * window.innerHeight);
+        // console.log("Height:", window.innerHeight);
+        document.body.style.overflowY = "";
+        lastScrollPos = window.scrollY;
+        isScrolling = false;
+      }, 650);
+    }
+
+      function test() {
+        // console.log("Trying to scroll, isScrolling:", isScrolling);
+        // console.log("Current: ", current);
+        if(!isScrolling) {
+          if (window.scrollY > lastScrollPos && current < activities.length-1) {
+            isScrolling = true;
+            current += 1;
+            // console.log("show next triggered with current:", current);
+            performWait();
+          }
+          else if(window.scrollY < lastScrollPos && current > -1) {
+            isScrolling = true;
+            current -= 1;
+            // console.log("show prev triggered with current:", current);
+            performWait();
+          }
         }
       }
-      console.log(activityRef.current)
-      activityRef.current[index].scrollIntoView({
-        behavior: "smooth",
-        block: "end"
-      });
-    }
-  }
+
+      window.addEventListener("scroll", test);
+  }, [performScroll]);
 
   return type ? (
     <ActivityError />
     ) : (
       <div className="ActivityLayout">
-        <div>
+        <div ref={videoRef}>
           <video className="video" src={require("../vid/activities.mp4")} poster={require("../img/activities_poster.jpg")} autoPlay loop muted />
           <div className="videoHeading">Explore the unimaginable!</div>
         </div>
@@ -124,19 +165,6 @@ const ActivityLayout = () => {
           {/*  Step into the extraordinary, where the impossible becomes reality, and every day is an unforgettable adventure!*/}
           {/*</p>*/}
 
-        {/*  {loading && <motion.div*/}
-        {/*    className="loader"*/}
-        {/*    variants={loaderVariant}*/}
-        {/*    animate="animation"*/}
-        {/*  />}*/}
-        {/*  {error && <div className="error">{error}</div>}*/}
-        {/*  {data &&*/}
-        {/*    <div ref={activityRef}>*/}
-        {/*      /!*<Activity name={types[type]} data={data}/>*!/*/}
-
-        {/*    </div>}*/}
-        {/*</div>*/}
-
         {loading &&
           <div className="backdrop">
             <div className="loading">
@@ -151,13 +179,15 @@ const ActivityLayout = () => {
         }
 
         <nav>
+          {/*<button type="button">Prev</button>*/}
           {activities.map((activity, i) => (
               <button type="button"
                       key={i}
                       ref={ref => buttonRef.current[i] = ref}
-                      onClick={() => handleButton(i)}
+                      onClick={() => performScroll(i)}
               >{activity}</button>
           ))}
+          {/*<button type="button">Next</button>*/}
         </nav>
         {error && <div className="error">{error}</div>}
 
@@ -166,26 +196,19 @@ const ActivityLayout = () => {
             <img src={require("../"+activity.url)} alt={activity.name} />
             <div className="imgLayer"></div>
             <div className="imgContent">
-              <p className="imgHeading">{activity.name}</p>
+              <div>
+                <p className="imgHeading">
+                  {activity.name}
+                  <button className="detailsButton" type="button">More Info</button>
+                </p>
+              </div>
+
               <p className="imgDesc">
                 {activity.desc}
               </p>
-              <button className="detailsButton" type="button">More Info</button>
             </div>
           </div>
         ))}
-
-      {/*  <div>*/}
-      {/*    <img src={require("../img/aqua.jpg")} alt="Aqua Escapades" />*/}
-      {/*    <div className="imgLayer"></div>*/}
-      {/*    <div className="imgContent">*/}
-      {/*      <p className="imgHeading">Aqua Escapades</p>*/}
-      {/*      <p className="imgDesc">*/}
-      {/*        Plunge into the deep, where endless mysteries await your exploration.*/}
-      {/*      </p>*/}
-      {/*      <button className="detailsButton" type="button">More Info</button>*/}
-      {/*    </div>*/}
-      {/*  </div>*/}
       </div>
   );
 }
