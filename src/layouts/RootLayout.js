@@ -1,7 +1,5 @@
 import {NavLink, useLocation, useOutlet, useParams} from "react-router-dom";
-import Breadcrumbs from "../components/Breadcrumbs";
 import {AnimatePresence, motion} from "framer-motion";
-import useTypes from "../hooks/useTypes";
 import {useState} from "react";
 
 const navVariant = {
@@ -80,15 +78,14 @@ const contentVariant = {
   }
 }
 
-const RootLayout = () => {
+const RootLayout = ({ types }) => {
   const location = useLocation();
   const { type } = useParams();
-  const { isRightType } = useTypes(type);
   const outlet = useOutlet();
   const [isFirstRender, setIsFirstRender] = useState(true);
   console.log(window.screen.availHeight);
   return (
-    <div id="myRoot"className="RootLayout">
+    <div id="myRoot" className="RootLayout">
       <header id="header">
         <motion.nav
           variants={navVariant}
@@ -133,10 +130,10 @@ const RootLayout = () => {
           variants={contentVariant}
           location={location}
           key={location.pathname}
-          initial={ location.pathname !== '/activities' && !isRightType() ? "hidden" : "" }
-          animate={ location.pathname !== '/activities' && !isRightType() ? "visible": "" }
+          initial={ location.pathname !== '/activities' && !types[type] ? "hidden" : "" }
+          animate={ location.pathname !== '/activities' && !types[type] ? "visible": "" }
           transition={ isFirstRender && location.pathname !== '/activities' ? {delay: 1.4, duration: 0.7} : {duration: 0.7} }
-          exit={ location.pathname !== '/activities' && !isRightType() ? "exit": "" }
+          exit={ location.pathname !== '/activities' && !types[type] ? "exit": "" }
         >
           {/*<Breadcrumbs location={location} />*/}
           <main>

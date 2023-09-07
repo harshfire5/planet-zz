@@ -45,6 +45,7 @@ body {
   background: linear-gradient(90deg, rgb(59, 139, 210) 5%, rgb(72, 180, 213) 50%, rgb(167, 199, 231) 85%);
   /*padding: 20px;*/
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 * {
@@ -76,7 +77,7 @@ header {
   width: 100vw;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 2;
   background: #061b2560;
 }
 
@@ -167,12 +168,12 @@ main > div {
   padding-right: 2px;
 }
 
-.ActivityLayout {
+.Activities {
   padding: 0;
 }
 
 
-.ActivityLayout nav {
+.Activities nav {
   position: fixed;
   width: 100vw;
   top: 80px;
@@ -182,7 +183,7 @@ main > div {
   z-index: 1;
 }
 
-.ActivityLayout button {
+.Activities button {
   display: inline-block;
   font-family: Nasalization, serif;
   font-size: 15px;
@@ -195,29 +196,29 @@ main > div {
   color: var(--primary);
 }
 
-.ActivityLayout nav > button:hover {
+.Activities nav > button:hover {
   color: var(--surface);
   background: var(--primary);
 }
 
-.ActivityLayout nav > button.active {
+.Activities nav > button.active {
   color: var(--surface);
   background: var(--primary);
 }
 
-.ActivityLayout .video {
+.Activities .video {
   width: 100vw;
   height: 100vh;
   /*height: 772px;*/
   object-fit: cover;
 }
 
-.ActivityLayout div {
+.Activities div {
   display: block;
   position: relative;
 }
 
-.ActivityLayout .videoHeading {
+.Activities .videoHeading {
   /*font-family: Blanka, serif;*/
   position: absolute;
   width: 100%;
@@ -230,14 +231,14 @@ main > div {
   background: linear-gradient(0deg, #008bcc,rgba(0,139,204,.738) 28%,rgba(0,139,204,.541) 44%,rgba(0,139,204,.482) 57%,rgba(0,139,204,.378) 66.5%,rgba(0,139,204,.294) 75%,rgba(0,139,204,.226) 83%,rgba(0,139,204,.025));
 }
 
-.ActivityLayout img {
+.Activities img {
   display: block;
   width: 100vw;
   height: 100vh;
   object-fit: cover;
 }
 
-.ActivityLayout .imgLayer {
+.Activities .imgLayer {
   max-width: 71vw;
   position: absolute;
   width: 100%;
@@ -248,18 +249,18 @@ main > div {
   padding: 12vh;
 }
 
-.ActivityLayout .imgContent {
+.Activities .imgContent {
   display: block;
   transform-origin: left center;
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
 }
 
-.ActivityLayout .imgContent:hover {
+.Activities .imgContent:hover {
   transform: scale(1.03);
 }
 
-.ActivityLayout .imgHeading {
+.Activities .imgHeading {
   /*font-family: Beyno, serif;*/
   position: absolute;
   bottom: 12vh;
@@ -267,14 +268,14 @@ main > div {
   font-size: 42px;
 }
 
-.ActivityLayout .imgDesc {
+.Activities .imgDesc {
   position: absolute;
   bottom: 7vh;
   left: 3vw;
   font-size: 22px;
 }
 
-.ActivityLayout .detailsButton {
+.Activities .detailsButton {
   margin-left: 40px;
   /*left: 30vw;*/
   /*font-family: serif;*/
@@ -287,12 +288,12 @@ main > div {
   padding: 5px 10px;
 }
 
-.ActivityLayout .detailsButton:hover {
+.Activities .detailsButton:hover {
   background-color: #116b95;
   border-color: #116b95;
 }
 
-.ActivityLayout .loading {
+.Activities .loading {
   position: absolute;
   top: 20%;
   left: 49%;
@@ -420,4 +421,55 @@ div.backdrop {
   color: #444;
   font-weight: bold;
   margin-top: 10px;
+}
+
+.swiper {
+  border-radius: 12px;
+  width: 100%;
+  height: 500px;
+  /*box-shadow: #00000060 -6px 6px 5px;*/
+}
+
+.swiper-pagination {
+  /*outline: solid 2px blue;*/
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+.bg_image {
+  position: fixed;
+  background: no-repeat 100%/100% url("img/aqua_bg.png");
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  filter: blur(6px);
+  scale: 1.1;
+}
+
+.SwiperContainer {
+  padding: 130px 80px 72px;
+}
+
+.carouselTextLayer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #00000070;
+  padding: 55px 200px;
+  border-top-right-radius: 8px;
+  z-index: 2;
+}
+
+.carouselText {
+  position: absolute;
+  bottom: 36px;
+  left: 44px;
+  font-size: 32px;
+  cursor: default;
+  z-index: 2;
 }

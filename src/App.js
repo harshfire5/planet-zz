@@ -2,11 +2,12 @@ import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} fr
 
 //Layouts
 import RootLayout from "./layouts/RootLayout";
-import ActivityLayout from "./layouts/ActivityLayout";
 
 //Pages
 import Home from "./components/Home";
 import About from "./components/About";
+import Activities from "./components/Activities";
+import Activity from "./components/Activity";
 import Apply from "./components/Apply";
 
 //Forms
@@ -16,16 +17,21 @@ import {applyAction} from "./components/ApplyForm";
 import NotFound from "./components/NotFound";
 
 
+const types = {
+  aerial: "Aerial Adventures",
+  aqua: "Aqua Escapades",
+  land: "Land Lifestyles"
+}
+
 function App() {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={
-        <RootLayout />
-      }>
+      <Route path="/" element={<RootLayout types={types} />}>
         <Route index element={<Home />}></Route>
         <Route path="about" element={<About />}></Route>
-        <Route path="activities/:type?" element={<ActivityLayout />}></Route>
+        <Route path="activities" element={<Activities  types={types} />}></Route>
+        <Route path="activities/:type" element={<Activity  types={types} />}></Route>
         <Route path="apply" element={<Apply />} action={applyAction}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Route>
