@@ -25,22 +25,26 @@
     {
       "id": 0,
       "name": "Abyssal Symphony",
-      "desc": "Dive into our deep-sea concert hall where you become part of the performance. Submerge among luminescent aquatic creatures while world-class musicians play ethereal music. It's an underwater symphony that transcends the ordinary."
+      "desc": "Dive into our deep-sea concert hall where you become part of the performance. Submerge among luminescent aquatic creatures while world-class musicians play ethereal music. It's an underwater symphony that transcends the ordinary.",
+      "url": "img/aqua/abyssal.jpg"
     },
     {
       "id": 1,
       "name": "Coral Reef Artistry",
-      "desc": "Use underwater 3D printing technology to craft intricate sculptures that become part of the coral reefs, providing homes for marine life. You'll be an artist and a conservationist, contributing to the vibrant underwater world."
+      "desc": "Use underwater 3D printing technology to craft intricate sculptures that become part of the coral reefs, providing homes for marine life. You'll be an artist and a conservationist, contributing to the vibrant underwater world.",
+      "url": "img/aqua/coral.jpg"
     },
     {
       "id": 2,
       "name": "AquaVenture Treasure Hunt",
-      "desc": "Equip yourself with AI-assisted diving gear and embark on high-tech treasure hunts, with holographic clues and underwater puzzles. Dive into a world of mystery and adventure beneath the waves."
+      "desc": "Equip yourself with AI-assisted diving gear and embark on high-tech treasure hunts, with holographic clues and underwater puzzles. Dive into a world of mystery and adventure beneath the waves.",
+      "url": "img/aqua/aquaventure.jpg"
     },
     {
       "id": 3,
       "name": "Subspace Submersibles",
-      "desc": "Experience teleportation-like travel underwater in our subspace submersibles, taking you instantly to distant, otherworldly underwater realms. Explore underwater landscapes that defy imagination."
+      "desc": "Experience teleportation-like travel underwater in our subspace submersibles, taking you instantly to distant, otherworldly underwater realms. Explore underwater landscapes that defy imagination.",
+      "url": "img/aqua/aquaventure.jpg"
     }
   ],
   "land": [
@@ -69,18 +73,21 @@
     {
       "id": 0,
       "name": "Aerial Adventures",
+      "alias": "aerial",
       "desc": "Reach for the skies and experience gravity-defying thrills that will leave you breathless.",
       "url": "img/aerial.jpg"
     },
     {
       "id": 1,
       "name": "Aqua Escapades",
+      "alias": "aqua",
       "desc": "Plunge into the deep, where endless mysteries await your exploration.",
       "url": "img/aqua.jpg"
     },
     {
       "id": 2,
       "name": "Land Lifestyles",
+      "alias": "land",
       "desc": "Explore our unconventional terrestrial experiences, where reality is what you make it.",
       "url": "img/land.jpg"
     }

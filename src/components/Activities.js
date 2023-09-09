@@ -1,5 +1,6 @@
 import {useCallback, useEffect, useRef, useState} from "react";
 import {motion} from "framer-motion";
+import {useNavigate} from "react-router-dom";
 
 const loaderVariant = {
   animation: {
@@ -30,6 +31,7 @@ const Activities = ({ types }) => {
   const buttonRef = useRef([]);
   const activityRef = useRef([]);
   const videoRef = useRef(null);
+  const navigate = useNavigate();
 
   // console.log(data);
 
@@ -63,18 +65,18 @@ const Activities = ({ types }) => {
       fetch('http://localhost:8000/activities')
         .then(res => {
           if (!res.ok) {
-            throw Error("No such activity exists!");
+            throw Error("Couldn't fetch repository");
           }
           return res.json();
         }).then(val => {
         setLoading(false);
         setData(val);
         document.body.style.overflowY = "";
-      })
+        })
         .catch(err => {
           setLoading(false);
-          console.log(err.message)
-          setError(err.message)
+          console.log(err.message);
+          setError(err.message);
         })
   }, []);
 
@@ -125,10 +127,12 @@ const Activities = ({ types }) => {
   }, [data, initialIndex, performScroll]);
 
   const buttonScroll = (index) => {
-    const { signal } = abortCont;
-    abortCont.abort(signal);
-    performScroll(index);
-    setInitialIndex(index);
+    if(data) {
+      const {signal} = abortCont;
+      abortCont.abort(signal);
+      performScroll(index);
+      setInitialIndex(index);
+    }
   };
 
   return (
@@ -198,7 +202,7 @@ const Activities = ({ types }) => {
         <div ref={ref => activityRef.current[i] = ref} key={i}>
           <img src={require("../"+activity.url)} alt={activity.name} />
           <div className="imgLayer"></div>
-          <div className="imgContent">
+          <div className="imgContent" onClick={() => navigate(activity.alias)}>
             <div>
               <p className="imgHeading">
                 {activity.name}
