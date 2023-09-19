@@ -123,6 +123,7 @@ const Activities = ({ types }) => {
       }
 
       window.addEventListener("wheel", scroll, {signal});
+      return () =>  window.removeEventListener("wheel", scroll);
     }
   }, [data, initialIndex, performScroll]);
 
@@ -203,12 +204,10 @@ const Activities = ({ types }) => {
           <img src={require("../"+activity.url)} alt={activity.name} />
           <div className="imgLayer"></div>
           <div className="imgContent" onClick={() => navigate(activity.alias)}>
-            <div>
-              <p className="imgHeading">
-                {activity.name}
-                <button className="detailsButton" type="button">More Info</button>
-              </p>
-            </div>
+            <p className="imgHeading">
+              {activity.name}
+            </p>
+            <button className="detailsButton" type="button">More Info</button>
 
             <p className="imgDesc">
               {activity.desc}

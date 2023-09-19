@@ -250,10 +250,17 @@ main > div {
 }
 
 .Activities .imgContent {
-  display: block;
+  display: grid;
   transform-origin: left center;
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
+  grid-template-columns: 6fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  position: absolute;
+  bottom: 5vh;
+  left: 3vw;
+  max-width: 60vw;
+  row-gap: 10px;
 }
 
 .Activities .imgContent:hover {
@@ -262,21 +269,22 @@ main > div {
 
 .Activities .imgHeading {
   /*font-family: Beyno, serif;*/
-  position: absolute;
-  bottom: 12vh;
-  left: 3vw;
+  /*position: absolute;*/
+  /*bottom: 12vh;*/
+  /*left: 3vw;*/
   font-size: 42px;
 }
 
 .Activities .imgDesc {
-  position: absolute;
-  bottom: 7vh;
-  left: 3vw;
+  /*position: absolute;*/
+  /*bottom: 7vh;*/
+  /*left: 3vw;*/
+  /*grid-column: span 2;*/
   font-size: 22px;
 }
 
 .Activities .detailsButton {
-  margin-left: 40px;
+  /*margin-left: 40px;*/
   /*left: 30vw;*/
   /*font-family: serif;*/
   font-size: 12px;
@@ -297,10 +305,6 @@ main > div {
   position: absolute;
   top: 20%;
   left: 49%;
-}
-
-.Activity .pageHeading {
-  margin-bottom: 0;
 }
 
 .Notfound {
@@ -398,7 +402,15 @@ div.backdrop {
   z-index: 2;
 }
 
+div.backdrop p {
+  text-align: center;
+}
+
 .modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   max-width: 50vw;
   margin: 20vh auto;
   font-size: 16px;
@@ -407,6 +419,8 @@ div.backdrop {
   padding: 50px;
   border-radius: 8px;
   text-align: center;
+  z-index: 3;
+  /*transform-origin: 20px 20px;*/
 }
 .modal button{
   color: #444;
@@ -421,6 +435,10 @@ div.backdrop {
   color: #444;
   font-weight: bold;
   margin-top: 10px;
+}
+
+.modal img {
+  width: 100%;
 }
 
 .swiper {
@@ -442,7 +460,6 @@ div.backdrop {
 
 .bg_image {
   position: fixed;
-  background: no-repeat 100%/100% url("img/aqua_bg.png");
   top: 0;
   left: 0;
   width: 100%;
@@ -450,6 +467,19 @@ div.backdrop {
   filter: blur(6px);
   scale: 1.1;
 }
+
+.bg_aerial {
+  background: no-repeat 100%/100% url("img/aerial_bg.jpg");
+}
+
+.bg_aqua {
+  background: no-repeat 100%/100% url("img/aqua_bg.png");
+}
+
+.bg_land {
+  background: no-repeat 100%/100% url("img/land_bg.jpg");
+}
+
 
 .SwiperContainer {
   padding: 130px 80px 72px;
@@ -508,6 +538,7 @@ div.backdrop {
   height: 300px;
   width: 360px;
   border-radius: 20px;
+  object-fit: cover;
 }
 
 .Activity .imgHeading {
@@ -534,4 +565,147 @@ div.backdrop {
   padding: 6px 18px;
   font-size: 40px;
   z-index: 1;
+}
+
+.Activity .modal {
+  max-width: 90vw;
+  height: 88vh;
+  margin: 6vh auto;
+  padding: 45px 50px;
+  overflow-y: scroll;
+}
+
+.Activity .modal .activityImg {
+  height: 410px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.Activity .modal p {
+  text-align: center;
+}
+
+.Activity .modalHeading {
+  padding-top: 8px;
+  font-size: 24px;
+}
+
+.Activity .loading {
+  position: absolute;
+  top: 40%;
+  left: 49%;
+}
+
+.closeButton {
+  position: absolute;
+  top: 16px;
+  right: 19px;
+  cursor: pointer;
+}
+
+.closeButton img{
+  height: 20px;
+  width: 20px;
+}
+
+.Apply {
+  padding: 0;
+}
+
+.Panes {
+  display: flex;
+  /*margin-top: 58px;*/
+}
+
+.Panes > div {
+  position: relative;
+  width: 100%;
+}
+.Panes img {
+  display: block;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.Panes .imgLayer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 480px;
+  height: 360px;
+  border-radius: 12px;
+  background: #00000080;
+  z-index: 1;
+}
+
+.Panes .imgHeading {
+  position: absolute;
+  top: 220px;
+  left: 0;
+  right: 0;
+  font-size: 24px;
+  z-index: 1;
+}
+
+.Panes .gifImage {
+  position: absolute;
+  top: 300px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 200px;
+  height: 200px;
+  background: transparent;
+  font-size: 24px;
+  z-index: 1;
+}
+
+.Panes .gifImage.spaceship {
+  top: 360px;
+  width: 100px;
+  height: 100px;
+}
+
+/*.Panes .gifImage.yoda, .Panes .gifImage.mouse, .Panes .gifImage.still {*/
+/*  display: none;*/
+/*}*/
+
+.Panes .rightPane {
+  background: mintcream;
+}
+
+.rightPane form {
+  color: black;
+  width: fit-content;
+  margin: 0 auto;
+  padding-top: 200px;
+  /*padding-left: 250px;*/
+  text-align: left;
+}
+
+.rightPane label {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.rightPane input {
+  display: block;
+  padding: 6px;
+  font-size: 16px;
+  width: 300px;
+  margin-bottom: 30px;
+}
+
+.rightPane button.nextBut {
+  width: 90px;
+  margin-top: 15px;
+  padding: 6px 4px;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
 }

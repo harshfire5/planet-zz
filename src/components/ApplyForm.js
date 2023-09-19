@@ -3,25 +3,25 @@ import {useEffect, useState} from "react";
 import Modal from "./Modal";
 
 const ApplyForm = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [modalData, setModalData] = useState(null);
   const [disableButton, setDisableButton] = useState(false);
   const data = useActionData();
   console.log(data);
 
   useEffect(() => {
     if(data && data.success) {
-      setShowModal(true);
+      setModalData("success");
       setDisableButton(true);
     }
   }, [data]);
 
-  function changeShowModal(state) {
-    setShowModal(state);
+  function changeModalData(state) {
+    setModalData(state);
   }
 
   return (
     <div className="ApplyForm">
-      <Modal showModal={showModal} changeShowModal={changeShowModal} />
+      <Modal type="apply" modalData={modalData} changeModalData={changeModalData} />
       <Form method="post" action="/apply">
         <p><strong>Personal Information</strong></p>
         <div>
