@@ -352,14 +352,14 @@ main > div {
   text-align: left;
 }
 
-Form > p {
-  padding-bottom: 20px;
-}
+/*Form > p {*/
+/*  padding-bottom: 20px;*/
+/*}*/
 
-Form > div {
-  display: flex;
-  padding: 6px;
-}
+/*Form > div {*/
+/*  display: flex;*/
+/*  padding: 6px;*/
+/*}*/
 
 .ApplyForm div > input {
   /*display: inline-block;*/
@@ -638,7 +638,7 @@ div.backdrop p {
   width: 480px;
   height: 360px;
   border-radius: 12px;
-  background: #00000080;
+  background: #000000d0;
   z-index: 1;
 }
 
@@ -647,7 +647,17 @@ div.backdrop p {
   top: 220px;
   left: 0;
   right: 0;
-  font-size: 24px;
+  font-size: 22px;
+  z-index: 1;
+}
+
+.Panes .imgText {
+  position: absolute;
+  top: 260px;
+  left: 0;
+  right: 0;
+  font-size: 18px;
+  text-align: center;
   z-index: 1;
 }
 
@@ -670,6 +680,12 @@ div.backdrop p {
   height: 100px;
 }
 
+.Panes .gifImage.visual {
+  top: 280px;
+  width: 260px;
+  height: 260px;
+}
+
 /*.Panes .gifImage.yoda, .Panes .gifImage.mouse, .Panes .gifImage.still {*/
 /*  display: none;*/
 /*}*/
@@ -682,7 +698,7 @@ div.backdrop p {
   color: black;
   width: fit-content;
   margin: 0 auto;
-  padding-top: 200px;
+  /*padding-top: 150px;*/
   /*padding-left: 250px;*/
   text-align: left;
 }
@@ -691,21 +707,158 @@ div.backdrop p {
   display: block;
   font-size: 18px;
   margin-bottom: 15px;
+  font-weight: bold;
 }
 
-.rightPane input {
+.rightPane input, .rightPane select {
   display: block;
   padding: 6px;
   font-size: 16px;
   width: 300px;
-  margin-bottom: 30px;
+  margin-bottom: 24px;
 }
 
-.rightPane button.nextBut {
-  width: 90px;
+.rightPane select {
+  width: 150px;
+  padding: 5px;
+  margin-bottom: 25px;
+  cursor: pointer;
+}
+
+.rightPane select option:hover {
+  cursor: pointer;
+}
+
+.rightPane textarea {
+  width: 300px;
+  font-size: 14px;
+  margin-bottom: 24px;
+  resize: none;
+}
+
+.rightPane .formHeading {
+  display: block;
+  margin-top: 130px;
+  padding-left: 210px;
+  /*padding: 0;*/
+  margin-bottom: 44px;
+  font-weight: bold;
+  font-size: 19px;
+  color: black;
+  text-align: left;
+}
+
+.rightPane button {
+  font-family: Nasalization, sans-serif;
+  width: 100px;
   margin-top: 15px;
-  padding: 6px 4px;
+  margin-bottom: 42px;
+  padding: 7px;
   font-size: 16px;
+  /*background: linear-gradient(90deg, #00a3be 25%, #37cde5 70%, #81b1de 90%);*/
+  /*border-radius: 4px;*/
   text-align: center;
   cursor: pointer;
+}
+
+.rightPane .formBut {
+  width: 300px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.rightPane .prevBut {
+  display: none;
+  margin-right: 20px;
+}
+
+.rightPane .submitBut {
+  display: none;
+}
+
+.rightPane .travelDates {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.rightPane .dates {
+  display: inline-block;
+  width: 200px;
+  margin: 0;
+}
+
+.rightPane .datesLabel {
+  padding-bottom: 10px;
+}
+
+.rightPane .radioLabel {
+  padding-top: 10px;
+}
+
+.rightPane .radio {
+  display: inline-block;
+  width: fit-content;
+  margin: 0;
+}
+
+.rightPane .radios {
+  display: block;
+  padding: 0 10px;
+  margin-bottom: 24px;
+}
+
+.rightPane .radios > label {
+  font-weight: normal;
+}
+
+
+.rightPane p {
+  display: inline-block;
+}
+
+.rightPane .tnC {
+  width: 600px;
+  height: 400px;
+  margin: 0 auto 24px;
+  color: black;
+  background-color: lightgray;
+  border-radius: 10px;
+  padding: 28px;
+  overflow: scroll;
+}
+
+.rightPane .tnC * {
+  margin-bottom: 20px;
+}
+
+.rightPane .tnC ul {
+  padding-left: 24px;
+}
+
+.rightPane .centerHeading {
+  margin: 130px auto 44px;
+  padding: 0;
+  text-align: center;
+}
+
+.rightPane .centerElement {
+  text-align: center;
+}
+
+.formPage {
+  display: none;
+}
+
+.rightPane .errorInput {
+  border-color: red;
+  background-color: #ffe9e9;
+  box-shadow: red 0 0 4px;
+  margin-bottom: 10px;
+}
+
+.rightPane .error {
+  margin-bottom: 20px;
+  font-size: 15px;
 }
